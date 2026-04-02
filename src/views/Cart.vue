@@ -38,7 +38,7 @@ export default defineComponent({
   components: { InputNumber, Button },
   data() {
     return {
-      // Simulação de itens no carrinho para teste
+      
       cartItems: [
         { product: MOCK_PRODUCTS[0], quantity: 1 },
         { product: MOCK_PRODUCTS[1], quantity: 2 }

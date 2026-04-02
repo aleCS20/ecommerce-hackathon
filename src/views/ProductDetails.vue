@@ -25,7 +25,6 @@ export default defineComponent({
   },
   methods: {
     addToCart() {
-      // Integração com o service de carrinho criado na Atividade 2
       alert(`${this.product?.name} adicionado!`);
     }
   }

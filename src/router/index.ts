@@ -4,7 +4,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        // Layout padrão para o consumidor (Header + Conteúdo)
+
         component: () => import('../layouts/DefaultLayout.vue'),
         children: [
             {
@@ -16,7 +16,7 @@ const routes: RouteRecordRaw[] = [
                 path: 'product/:id',
                 name: 'ProductDetails',
                 component: () => import('../views/ProductDetails.vue'),
-                props: true // Permite receber o ID da URL como prop [cite: 37]
+                props: true
             },
             {
                 path: 'cart',
@@ -27,13 +27,13 @@ const routes: RouteRecordRaw[] = [
                 path: 'checkout',
                 name: 'Checkout',
                 component: () => import('../views/Checkout.vue'),
-                meta: { requiresAuth: true } // Guard de segurança para o checkout [cite: 39]
+                meta: { requiresAuth: true }
             }
         ]
     },
     {
         path: '/admin',
-        // Layout diferenciado para área administrativa [cite: 24, 52]
+
         component: () => import('../layouts/AdminLayout.vue'),
         meta: { requiresAdmin: true },
         children: [
@@ -54,14 +54,14 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    // Garante que a página sempre carregue no topo ao mudar de rota
+
     scrollBehavior() {
         return { top: 0 };
     }
 });
 
 /**
- * Guards de Proteção de Acesso (Requisito Atividade 5)
+ * Guards de Proteção de Acesso
  */
 router.beforeEach((to, from, next) => {
     const isAuthenticated = localStorage.getItem('user_token');
